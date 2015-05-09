@@ -34,12 +34,14 @@ d1a = Dock("Params", size=(300, 500))     ## give this dock the minimum possible
 d2 = Dock("Dock2 - Console", size=(500,200))
 d3 = Dock("wave-forms", size=(300,400))
 d4 = Dock("Response", size=(500,400))
+d5 = Dock("Impedance Graph", size=(500,400))
 #d5 = Dock("Impedance Graph", size=(500,400))
 area.addDock(d1, 'left')      ## place d1 at left edge of dock area (it will fill the whole space since there are no other docks yet)
 area.addDock(d1a, 'above', d1)
 area.addDock(d2, 'right')     ## place d2 at right edge of dock area
 area.addDock(d3, 'bottom', d1)## place d3 at bottom edge of d1
 area.addDock(d4, 'top', d2)   
+area.addDock(d5, 'above', d4)   
 #area.addDock(d5, 'above', d4)   
 
 #area.moveDock(d4, 'top', d2)     ## move d4 to top edge of d2
