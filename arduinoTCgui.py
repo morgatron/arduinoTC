@@ -288,22 +288,29 @@ def updateResponsePlots(sampleTime, read0, read90, output):
 
 def updateImpedancePlot(sampleTime, read0, read90, output):
     global R_data, C_data,  R_curve, C_curve
+    sR=read0/sig0;
+	sI=read90/sig0;
+	num=Rref*(-sI*sI -sR*sR + sR);
+	denom= sI*sI + sR*sR - 2.*sR + 1.;
+	R= num/denom;
+
+	num=Rref*-sI;
+	denom= sI*sI + sR*sR - 2.*sR + 1.;
+	C=denom/num;
+
+
     #read0=sp.rand()
     #read90=sp.rand()
     #output=sp.rand()/2+0.4
-    read_data0.append(read0)
-    read_data90.append(read90)
-    read_dataR.append(sp.sqrt(read0**2+read90**2))
-    output_data.append(output)
+    R_data.append(R)
+    C_data.append(C)
 
     #tlast+=0.5+sp.rand()/5 
     tax.append(sampleTime)
     #tax.append(time.time()-tstart)
 
-    read_curve0.setData(tax, read_data0)
-    read_curve90.setData(tax, read_data90)
-    read_curveR.setData(tax, read_dataR)
-    output_curve.setData(tax, output_data)
+    R_curve.setData(tax, R)
+    C_curve.setData(tax, C)
 
 def updateSensWfm(dat):
     sens_curve.setData(dat)
